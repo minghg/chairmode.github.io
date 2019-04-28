@@ -77,7 +77,29 @@
 
 			renderer.setSize(window.innerWidth, window.innerHeight);
 
-			renderer.shadowMapEnabled = true;		
+			renderer.shadowMapEnabled = true;
+
+
+
+			
+
+
+
+			trackballControls = new THREE.TrackballControls(camera);
+
+			trackballControls.rotateSpeed = 1.0;
+
+			trackballControls.zoomSpeed = 1.0;
+
+			trackballControls.panSpeed = 1.0;
+
+			trackballControls.noZoom = false;
+
+			trackballControls.noPan = false;
+
+			trackballControls.staticMoving = true;
+
+			trackballControls.dynamicDampingFactor = 0.3;
 
 			var planeGeometry = new THREE.PlaneGeometry(40, 20);
 
@@ -138,9 +160,9 @@
 
 			var mtlLoader = new THREE.MTLLoader();
 
-			mtlLoader.setPath('3d_mesh/');
+			mtlLoader.setPath('chair/');
 
-			mtlLoader.load('M6_simplified_3d_mesh.obj.mtl', function (materials) {
+			mtlLoader.load('chair.obj.mtl', function (materials) {
 
 
 
@@ -152,9 +174,9 @@
 
 				objLoader.setMaterials(materials);
 
-				objLoader.setPath('3d_mesh/');
+				objLoader.setPath('chair/');
 
-				objLoader.load('M6_simplified_3d_mesh.obj', function (object) {
+				objLoader.load('chair.obj', function (object) {
 
 					console.log(object);
 
@@ -167,7 +189,7 @@
 					scene.add(object);
 
 					var textureLoader = new THREE.TextureLoader();
-					var texture = textureLoader.load('3d_mesh/M6_texture.jpg');
+					var texture = textureLoader.load('chair/chair.jpg');
 
 				}, onProgress, onError);
 
